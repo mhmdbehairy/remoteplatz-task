@@ -17,13 +17,19 @@ class App extends React.Component {
             { start: '- ', cmd: 'InsertUnorderedList', value: { 'list-style-type': 'circle' } },
             { start: '* ', cmd: 'InsertUnorderedList', value: { 'list-style-type': 'disc' } },
             { start: '# ', cmd: 'InsertUnorderedList', value: { 'list-style-type': 'square' } },
+            { start: '1. ', cmd: 'InsertOrderedList', value: { 'list-style-type': 'decimal' } },
+            { start: 'a. ', cmd: 'InsertOrderedList', value: { 'list-style-type': 'lower-alpha' } },
+            { start: 'i. ', cmd: 'InsertOrderedList', value: { 'list-style-type': 'lower-roman' } },
           ],
           setup: function (editor) {
             editor.addShortcut('ctrl+r', 'UnorderedList', function () {
               editor.execCommand('InsertUnorderedList');
             });
+            editor.addShortcut('ctrl+e', 'UnorderedList', function () {
+              editor.execCommand('InsertOrderedList');
+            });
           },
-          toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code | bullist'
+          toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code | bullist numlist'
         }}
         onChange={this.handleEditorChange}
       />
